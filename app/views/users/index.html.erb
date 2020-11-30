@@ -1,8 +1,28 @@
 <div class="container">
   <div class="columns">
     <div class="column">
-      <%= @user.full_name %>
+      <h1 class="is-size-1"><%= @user.full_name %>'s Contests</h1>
+    </div>
+
+    <div class="column">
+      <div class="buttons is-right">
+        <%= link_to "New Contest", new_contest_path, class: "button is-primary" %>
+      </div>
     </div>
   </div>
+
+  <% @contests.in_groups_of(2, false) do |contest_row| %>
+    <div class="columns">
+      <% contest_row.each do |contest| %>
+        <div class="column">
+          <h3 class="is-size-3">
+            <%= contest.name %>
+          </h3>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
+
+
 

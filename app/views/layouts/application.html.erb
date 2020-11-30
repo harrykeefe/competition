@@ -11,8 +11,12 @@
 
   <body>
     <div id="flash-display">
+      
       <% flash.each do |type, message| %>
-        <p class="<%= type %>%"><%= message %></p>
+        <div class="notification">
+          <button class="delete"></button>
+          <%= message %>
+        </div>
       <% end %>
     </div>
 

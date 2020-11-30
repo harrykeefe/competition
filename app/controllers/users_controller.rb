@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
+    @contests = current_user.contests
   end
 
 end
