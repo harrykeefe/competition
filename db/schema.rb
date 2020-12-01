@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_210127) do
+ActiveRecord::Schema.define(version: 2020_11_30_222651) do
 
   create_table "contests", force: :cascade do |t|
     t.string "name", null: false
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2020_11_30_210127) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_contests_on_user_id"
+  end
+
+  create_table "prizes", force: :cascade do |t|
+    t.string "name", null: false
+    t.decimal "value", precision: 10, scale: 2, null: false
+    t.integer "contest_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["contest_id"], name: "index_prizes_on_contest_id"
   end
 
   create_table "users", force: :cascade do |t|

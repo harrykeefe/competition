@@ -1,0 +1,7 @@
+<% if errors.any? %>
+  <% errors.each do |error| %>
+    <div class="field-instruction with-errors">
+      <%= error %>
+    </div>
+  <% end %>
+<% end %>

@@ -5,6 +5,21 @@
     <%= f.text_field :name%>
   <div>
 
+  <div class="field">
+
+    <h3 class="is-size-3">Prizes</h3>
+    <%= f.fields_for :prizes do |prize_form| %>
+      <div>
+        <%= prize_form.label :name %>
+        <%= prize_form.text_field :name %>
+
+        <%= prize_form.label :value %>
+        <%= prize_form.text_field :value %>
+      </div>
+    <% end %>
+  </div>
+
+
   <%= f.submit %>
 
 <% end %>

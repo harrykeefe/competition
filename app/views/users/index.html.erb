@@ -17,7 +17,20 @@
         <div class="column">
           <h3 class="is-size-3">
             <%= contest.name %>
+            <%= contest.total_prize_value %>
           </h3>
+          
+          <div class="">
+            <h4 class="is-size-4">Prizes</h4>
+            <ul>
+              <% contest.prizes.each do |prize| %>
+                <li><%= prize.name %> - <%= prize.value %></li>
+              <% end %>
+            </ul>
+
+            <%= link_to 'Edit Contest', edit_contest_path(contest.id) %>
+          </div>
+
         </div>
       <% end %>
     </div>
