@@ -2,7 +2,14 @@
   
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name%>
+    <%= f.text_field :name, autofocus: true %>
+
+    <%= 
+      render partial: "utilities/field_errors",
+      locals: {
+        errors: @contest.errors[:name]
+      }
+    %>
   <div>
 
   <div class="field">

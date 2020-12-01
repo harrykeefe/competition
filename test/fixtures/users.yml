@@ -4,8 +4,15 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+paid_user:
+  full_name: "Harrison Keefe"
+  email: "harry1@harrykeefe.com"
+  account_type: "paid"
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'YhEJ55dRyUWAD3') %>
+
+free_user:
+  full_name: "Harrison Keefe"
+  email: "harry2@harrykeefe.com"
+  account_type: "free"
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'YhEJ55dRyUWAD3') %>
+

@@ -1,11 +1,9 @@
 class ContestsController < ApplicationController
   before_action :authenticate_user!
 
-  DEFAULT_NUMBER_OF_PRIZES = 8
-
   def new
     @contest = Contest.new
-    DEFAULT_NUMBER_OF_PRIZES.times { @contest.prizes.build }
+    number_of_prizes.times { @contest.prizes.build }
   end
 
   def create
@@ -34,7 +32,7 @@ class ContestsController < ApplicationController
         format.html { redirect_to root_path, notice: "Contest was successfully updated" }
         format.json { }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json @contest.errors, status: :unprocessable_entity }
       end
     end
@@ -44,5 +42,14 @@ class ContestsController < ApplicationController
 
   def contest_params
     params.require(:contest).permit(:name, prizes_attributes: [:name, :value, :id])
+  end
+
+  def number_of_prizes
+    case current_user.account_type
+    when "paid"
+      User::PAID_TIER_PRIZE_DEFAULT
+    when "free"
+      User::FREE_TIER_PRIZE_LIMIT
+    end
   end
 end
